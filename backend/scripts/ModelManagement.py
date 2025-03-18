@@ -8,7 +8,7 @@ class ModelManagement:
         # self.preprocessor = None
         
     def load(self, filename):
-        with open("../artifacts/" + filename, 'rb') as file:
+        with open("artifacts/" + filename, 'rb') as file:
             self.model = pickle.load(file)
                 
     def predict(self, X):
