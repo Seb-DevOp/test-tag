@@ -5,10 +5,10 @@ git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
 
 run_tests() {
-  echo " Lancement des tests..."
+  echo "✅ Lancement des tests..."
   npm run test
   if [ $? -ne 0 ]; then
-    echo " Tests échoués. Abandon de la release."
+    echo "❌ Tests échoués. Abandon de la release."
     exit 1
   fi
 }
@@ -23,11 +23,12 @@ case $TOOL in
   standard-version)
     run_tests
     npx standard-version
-    get_commit_message # Appel de la fonction pour récupérer le commit
-    # Ajouter le commit message dans CHANGELOG, mais après la version générée par standard-version
+    # Obtenir le message du dernier commit
+    get_commit_message 
+    # Ajouter l'information du dernier commit après le changelog généré
     echo -e "\n### Dernier Commit: $COMMIT_MESSAGE\n" >> CHANGELOG.md
     git add CHANGELOG.md
-    git commit -m "Update CHANGELOG.md with commit message"
+    git commit -m "Update CHANGELOG.md with last commit message"
     git push --follow-tags origin main
     gh release create $(node -p "require('./package.json').version") -F CHANGELOG.md
     ;;
