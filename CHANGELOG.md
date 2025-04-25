@@ -27,3 +27,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Dernier Commit: chore(release): 1.0.6
 
 ### Dernier Commit: chore(release): 1.0.7
+
+### Dernier Commit: Fix changelog
+
