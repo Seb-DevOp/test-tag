@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.10 (2025-04-25)
+
 ### 1.0.9 (2025-04-25)
 
 ### 1.0.8 (2025-04-25)
@@ -33,4 +35,3 @@ All notable changes to this project will be documented in this file. See [standa
 ### Dernier Commit: Fix changelog
 ## [1.0.9] - 2025-04-25
 - 9eb7d96 chore(release): 1.0.9
-
