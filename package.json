@@ -1,6 +1,6 @@
 {
   "name": "test-tag",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Projet de test pour le processus de publication",
   "main": "index.js",
   "scripts": {
