@@ -4,7 +4,7 @@
   "description": "Projet de test pour le processus de publication",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests && newman run your-collection.json",
+    "test": "jest --passWithNoTests",
     "release": "standard-version"
   },
   "devDependencies": {
