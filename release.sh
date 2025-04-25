@@ -5,10 +5,10 @@ git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
 
 run_tests() {
-  echo " Lancement des tests..."
+  echo "✅ Lancement des tests..."
   npm run test
   if [ $? -ne 0 ]; then
-    echo " Tests échoués. Abandon de la release."
+    echo "❌ Tests échoués. Abandon de la release."
     exit 1
   fi
 }
@@ -27,7 +27,7 @@ case $TOOL in
     npx standard-version
     get_version_and_commit
     # Ajouter la version, la date et le dernier commit dans le changelog
-    echo -e "## [$VERSION] - $DATE\n- $COMMIT_HASH $COMMIT_MESSAGE\n" >> CHANGELOG.md
+    echo -e "\n[$VERSION] - $DATE\n$COMMIT_HASH $COMMIT_MESSAGE\n" >> CHANGELOG.md
     git add CHANGELOG.md
     git commit -m "Update CHANGELOG.md for version $VERSION"
     git push --follow-tags origin main
