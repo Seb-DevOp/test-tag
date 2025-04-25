@@ -39,3 +39,7 @@ All notable changes to this project will be documented in this file. See [standa
 - 9eb7d96 chore(release): 1.0.9
 ## [1.0.10] - 2025-04-25
 - 5185f27 chore(release): 1.0.10
+
+[1.0.11] - 2025-04-25
+8499d53 chore(release): 1.0.11
+
