@@ -20,7 +20,14 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
+
+      # Récupère le dernier commit et le passe comme variable d'environnement
+      - name: Get latest commit message
+        id: commit
+        run: echo "LAST_COMMIT=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
       - run: chmod +x ./release.sh
       - run: ./release.sh standard-version
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LAST_COMMIT: ${{ env.LAST_COMMIT }}  # Passe le commit en variable d'environnement

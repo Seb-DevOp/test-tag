@@ -13,20 +13,12 @@ run_tests() {
   fi
 }
 
-get_commit_message() {
-  # Récupère le dernier message de commit
-  COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-  echo "Dernier commit : $COMMIT_MESSAGE"
-}
-
 case $TOOL in
   standard-version)
     run_tests
     npx standard-version
-    # Obtenir le message du dernier commit
-    get_commit_message 
-    # Ajouter l'information du dernier commit après le changelog généré
-    echo -e "\n### Dernier Commit: $COMMIT_MESSAGE\n" >> CHANGELOG.md
+    # Ajouter l'information du dernier commit au changelog
+    echo -e "\n### Dernier Commit: $LAST_COMMIT\n" >> CHANGELOG.md
     git add CHANGELOG.md
     git commit -m "Update CHANGELOG.md with last commit message"
     git push --follow-tags origin main
