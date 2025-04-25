@@ -13,14 +13,22 @@ run_tests() {
   fi
 }
 
+# Récupérer la dernière version et commit
+get_version_and_commit() {
+  VERSION=$(node -p "require('./package.json').version")
+  COMMIT=$(git log -1 --pretty=format:'%h %s')
+  DATE=$(date +'%Y-%m-%d')
+}
+
 case $TOOL in
   standard-version)
     run_tests
     npx standard-version
-    # Ajouter l'information du dernier commit au changelog
-    echo -e "\n### Dernier Commit: $LAST_COMMIT\n" >> CHANGELOG.md
+    get_version_and_commit
+    # Ajouter la version, la date et le dernier commit dans le changelog
+    echo -e "## [$VERSION] - $DATE\n- $COMMIT\n" >> CHANGELOG.md
     git add CHANGELOG.md
-    git commit -m "Update CHANGELOG.md with last commit message"
+    git commit -m "Update CHANGELOG.md for version $VERSION"
     git push --follow-tags origin main
     gh release create $(node -p "require('./package.json').version") -F CHANGELOG.md
     ;;
